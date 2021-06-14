@@ -41,10 +41,9 @@ int word_length(char *str, int index, char sep)
     return i - index;
 }
 
-char **my_str_to_word_array(char *str, char sep)
+char **my_str_to_word_array(char *str, char sep, int in_word)
 {
     char **output = malloc_w(sizeof(char *) * (count_words(str, sep) + 1));
-    int in_word = 0;
     int j = -1;
     int k = 0;
 

@@ -54,7 +54,7 @@ int main(int ac, char **av)
     if (pokemons == NULL)
         return 0;
     if (parsed_csv == NULL)
-        return 0;    
+        return 0;
     create_pokemon_database(pokemons, parsed_csv, "pokecfg");
     if (!check_arguments(ac, av, pokemons))
         return (0);

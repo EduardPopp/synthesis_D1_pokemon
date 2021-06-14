@@ -10,7 +10,8 @@
 
 void print_pokemon_list(llist_t *pokemons)
 {
-    for (pokemons = pokemons->prev; pokemons != NULL; pokemons = pokemons->next) {
+    for (pokemons = pokemons->prev; pokemons != NULL; \
+    pokemons = pokemons->next) {
         my_printf("Pokemon %s has %d attack, ", pokemons->name, pokemons->atk);
         my_printf("%d defense, ", pokemons->def);
         my_printf("%d speed and %d health", pokemons->spd, pokemons->health);

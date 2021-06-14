@@ -8,22 +8,6 @@
 #include "../include/helper.h"
 #include "../include/my.h"
 
-int get_random_atk_one(active_pokemon *one)
-{
-    int atk = 0;
-
-    atk = rand() % one->atk;
-    return (atk);
-}
-
-int get_random_atk_two(active_pokemon *two)
-{
-    int atk = 0;
-
-    atk = rand() % two->atk;
-    return (atk);
-}
-
 void get_fastest(active_pokemon *one, active_pokemon *two)
 {
     if (one->spd < two->spd) {
@@ -108,11 +92,11 @@ void gameloop(llist_t *pokemons, char **av)
     int atk_two = 0;
     char *name_one = uppercase_args(av[1]);
     char *name_two = uppercase_args(av[2]);
-    
+
     active_pokemon *one = get_active_pokemon(pokemons, name_one);
     active_pokemon *two = get_active_pokemon(pokemons, name_two);
     get_fastest(one, two);
-    while(one->health > 0 && two->health > 0) {
+    while (one->health > 0 && two->health > 0) {
         if (two->first == 1) {
             second_pokemon_attack(one, two, atk_two);
         } else {

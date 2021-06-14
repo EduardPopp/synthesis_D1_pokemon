@@ -22,6 +22,7 @@ int check_arguments(int ac, char **av, llist_t *pokemons)
     int first_arg_true = 0;
     int second_arg_true = 0;
     llist_t *current = pokemons->prev;
+
     if (ac != 3)
         return 0;
     for (; current!= NULL; current = current->next) {
@@ -31,8 +32,8 @@ int check_arguments(int ac, char **av, llist_t *pokemons)
         if (!my_modified_strcmp(av[2], current->name))
             second_arg_true = 1;
     }
-    check_each_pokemon(first_arg_true, second_arg_true, av);  
+    check_each_pokemon(first_arg_true, second_arg_true, av);
     if (first_arg_true != 1 || second_arg_true != 1)
-        return 0;        
+        return 0;
     return 1;
 }

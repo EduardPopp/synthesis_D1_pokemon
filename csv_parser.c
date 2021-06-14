@@ -37,6 +37,7 @@ csv *parse_info(char *content)
 {
     int comma_count = 0;
     int i;
+    int in_word = 0;
     csv *output = malloc(sizeof(csv));
     char **content_lines = NULL;
 
@@ -44,24 +45,25 @@ csv *parse_info(char *content)
         return NULL;
     for (i = 0; content[i] && content[i] != '\n'; i++)
         comma_count = (content[i] == ';') ? comma_count + 1 : comma_count;
-    content_lines = my_str_to_word_array(content, '\n');
+    content_lines = my_str_to_word_array(content, '\n', in_word);
     for (i = 0; content_lines[i]; i++);
     output->n_rows = i - 1;
     output->n_columns = comma_count + 1;
-    output->labels = my_str_to_word_array(content_lines[0], ';');
+    output->labels = my_str_to_word_array(content_lines[0], ';', in_word);
     free_char_table(content_lines);
     return output;
 }
 
 csv *parse_data(char *content, csv *output)
 {
-    char **content_lines = my_str_to_word_array(content, '\n');
+    int in_word = 0;
+    char **content_lines = my_str_to_word_array(content, '\n', in_word);
 
     output->data = malloc(sizeof(char **) * (output->n_rows + 1));
     if (output->data == NULL)
         return NULL;
     for (int i = 1; content_lines[i]; i++)
-        output->data[i - 1] = my_str_to_word_array(content_lines[i], ';');
+        output->data[i - 1] = my_str_to_word_array(content_lines[i], ';', in_word);
     output->data[output->n_rows] = NULL;
     free_char_table(content_lines);
     return output;

@@ -13,6 +13,7 @@ SRC	=	src/main.c \
 		free_everything.c \
 		src/print_pokemons.c \
 		src/gameloop.c	\
+		src/gameloop_utils.c	\
 		src/name_sort_pokemon.c	\
 		src/create_pokedex.c	\
 		src/error_check_pokedex.c
